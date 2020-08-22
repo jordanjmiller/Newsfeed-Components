@@ -85,8 +85,72 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'i did it mom',
+    date: 'Oct 2nd, 2019',
+    firstParagraph: `it works it works it works it works it works it works it works it works it works it works it works 
+    it works it works it works it works it works it works it works it works it works it works it works it works it works it works it works 
+    it works it works it works it works it works it works it works it works it works it works it works it works it works it works it works it works 
+    it works it works it works it works it works it works it works it works it works it works it works it works it works it works it works `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+
+
+
+function newArticle(data){
+  let article = document.createElement('div');
+  article.classList.add('article');
+  let title = document.createElement('h2');
+  let date = document.createElement('p');
+  let firstP = document.createElement('p');
+  let secondP = document.createElement('p');
+  let thirdP = document.createElement('p');
+  let button = document.createElement('span');
+
+  title.textContent = data.title;
+  date.textContent = data.date;
+  date.classList.add('date');
+  firstP.textContent = data.firstParagraph;
+  secondP.textContent = data.secondParagraph;
+  thirdP.textContent = data.thirdParagraph;
+  button.textContent = 'Expand';
+  button.classList.add('expandButton');
+  button.addEventListener('click' , (e) => {
+    article.classList.toggle('article-open');
+  });
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstP);
+  article.appendChild(secondP);
+  article.appendChild(thirdP);
+  article.appendChild(button);
+  console.log(article);
+  return article;
+};
+
+let articlesDiv = document.querySelector('.articles');
+console.log(articlesDiv);
+const articles = data.map((article) => {
+    let arti = newArticle(article);
+    return arti;
+});
+console.log(articles);
+articles.forEach((arti) => {
+  articlesDiv.appendChild(arti);
+});
+
+console.log(articles);
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
